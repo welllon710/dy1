@@ -14,7 +14,7 @@ app.use(logger);
 
 // 首页
 app.get("/", async (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.send('ffffffffff')
 });
 
 // 更新计数
