@@ -81,6 +81,29 @@ function writeCache() {
   fs.writeFileSync(cacheFilePath, JSON.stringify(cache));
 }
 
+// // 获取 access_token
+// async function getAccessToken() {
+//   const currentTime = Date.now();
+//   if (cache.accessToken && currentTime < cache.accessTokenExpiresAt) {
+//       return cache.accessToken; // 返回缓存的 access_token
+//   }
+
+//   try {
+//       const url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APP_ID}&secret=${APP_SECRET}`;
+//       const response = await axios.get(url);
+
+//       if (response.data.access_token) {
+//           cache.accessToken = response.data.access_token;
+//           // 设置提前 5 分钟过期时间
+//           cache.accessTokenExpiresAt = currentTime + (response.data.expires_in - 300) * 1000;
+//           writeCache(); // 将新的 access_token 写入缓存文件
+//           console.log('Access token obtained and cached:', cache.accessToken);
+//       }
+//   } catch (error) {
+//       console.error('Error fetching access_token:', error);
+//   }
+// }
+
 // 获取 jsapi_ticket
 async function getJsapiTicket() {
   const currentTime = Date.now();
@@ -92,7 +115,7 @@ async function getJsapiTicket() {
       const url = `https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi`;
       const response = await axios.get(url);
 
-      console.log('response', response);
+      console.log('我是response', response);
             
       if (response.data.ticket) {
           cache.jsapiTicket = response.data.ticket;
