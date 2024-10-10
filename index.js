@@ -122,7 +122,7 @@ app.get('/test', async (req, res) => {
 	res.send('fffffffff')
 });
 
-app.get('/wechat-signature', async (req, res) => {
+app.post('/wechat-signature', async (req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*")
 	let ip = getClientIp(req).match(/\d+.\d+.\d+.\d+/);
 	ip = ip ? ip.join('.') : null;
