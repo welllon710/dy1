@@ -91,7 +91,9 @@ async function getJsapiTicket() {
       // await getAccessToken();
       const url = `https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi`;
       const response = await axios.get(url);
-      
+
+      console.log('response', response);
+            
       if (response.data.ticket) {
           cache.jsapiTicket = response.data.ticket;
           // 设置提前 5 分钟过期时间
@@ -120,8 +122,7 @@ function getClientIp (req) {
 // 验签接口
 app.get('/test', async (req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*")
-  console.log('headers', req.headers);
-	res.send('fffffffff')
+	res.send({cache})
 });
 
 app.post('/wechat-signature', async (req, res) => {
