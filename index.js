@@ -127,7 +127,8 @@ app.get('/wechat-signature', async (req, res) => {
 	let ip = getClientIp(req).match(/\d+.\d+.\d+.\d+/);
 	ip = ip ? ip.join('.') : null;
 	console.log('来访者', ip);
-    const { url } = req.query;
+    // const { url } = req.query;
+    const { url } = req.body;
 
     if (!url) {
         return res.status(400).json({ error: 'Missing url parameter' });
